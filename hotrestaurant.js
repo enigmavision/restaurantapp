@@ -38,8 +38,9 @@ app.get("/", function(req, res) {
 });
 
 // route to view reservations
-app.get("/api/:reservations?", function(req, res) {
+app.get("/view", function(req, res) {
 	res.sendFile(path.join(__dirname, "viewTable.html"));
+	//res.send(reservations);
 });
 
 // route to add specific reservations
