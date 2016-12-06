@@ -27,8 +27,46 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // DATA
-var reservations = [];
-var waitlist = [];
+var reservations = [
+	{
+	  username: "darthmaul",
+	  name: "Darth Maul",
+	  phone: "123-432543",
+	  email: "hi@aol.com"
+	},
+	{
+	  username: "darthmaul",
+	  name: "Darth Maul",
+	  phone: "123-432543",
+	  email: "hi@aol.com"
+	},
+	{
+	  username: "darthmaul",
+	  name: "Darth Maul",
+	  phone: "123-432543",
+	  email: "hi@aol.com"
+	},
+	{
+	  username: "darthmaul",
+	  name: "Darth Maul",
+	  phone: "123-432543",
+	  email: "hi@aol.com"
+	},
+	{
+	  username: "darthmaul",
+	  name: "Darth Maul",
+	  phone: "123-432543",
+	  email: "hi@aol.com"
+	},
+];
+var waitlist = [
+	{
+	  username: "yoda",
+	  name: "Yoda",
+	  phone: "123-432543",
+	  email: "hi@aol.com"
+	}
+];
 
 // ROUTES
 
@@ -51,7 +89,7 @@ app.get("/add", function(req, res) {
 // create new characters - takes in JSON input
 app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
-	newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+	newReservation.userName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 		console.log(newReservation);
 		if (reservations.length <=5) {
 			reservations.push(newReservation);
