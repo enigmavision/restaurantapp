@@ -6,7 +6,7 @@
 
 
 
-// DEPENDENCIES 
+// DEPENDENCIES
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
@@ -57,4 +57,14 @@ app.post("/api/new", function(req, res) {
 		res.json(newReservation);
 });
 
-
+if (reservations.length <=5) {
+	reservations.push(newReservation);
+	res.json(newReservation);
+	console.log("You've made a reservation")
+} else if (waitlist.length <=2) {
+	waitlist.push(newReservations);
+	res.json(newReservations);
+	console.log("You've been added to the waitlist!")
+}
+	else
+	console.log("Sorry, waitlist full!")
