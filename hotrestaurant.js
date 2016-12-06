@@ -62,8 +62,8 @@ if (reservations.length <=5) {
 	res.json(newReservation);
 	console.log("You've made a reservation")
 } else if (waitlist.length <=2) {
-	waitlist.push(newReservations);
-	res.json(newReservations);
+	waitlist.push(newReservation);
+	res.json(newReservation);
 	console.log("You've been added to the waitlist!")
 }
 	else
