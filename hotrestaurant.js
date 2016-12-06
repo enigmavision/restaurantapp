@@ -81,8 +81,13 @@ app.get("/view", function(req, res) {
 	//res.send(reservations);
 });
 
-app.get("api/:reservations?", function(req, res) {
-	var chosen = req.params.userName;
+// route to add specific reservations
+app.get("/add", function(req, res) {
+	res.sendFile(path.join(__dirname, "makeRes.html"));
+});
+
+app.get("/api/:username?", function(req, res) {
+	var chosen = req.params.username;
 	if (chosen) {
 		console.log(chosen);
 			for (var i=0; i < reservations.length; i++) {
@@ -92,11 +97,6 @@ app.get("api/:reservations?", function(req, res) {
 	} else {
 		res.json(reservations);
 	}
-});
-
-// route to add specific reservations
-app.get("/add", function(req, res) {
-	res.sendFile(path.join(__dirname, "makeRes.html"));
 });
 
 // create new characters - takes in JSON input
