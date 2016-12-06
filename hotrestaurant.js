@@ -17,7 +17,7 @@ var PORT = 3000;
 
 // LISTENING
 app.listen(PORT, function() {
-	console.log("App lsitening on PORT " + PORT);
+	console.log("App listening on PORT " + PORT);
 });
 
 // SET UP THE EXPRESS APP TO HANDLE DATA PARSING
@@ -52,19 +52,16 @@ app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
 	newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 		console.log(newReservation);
-		
-		reservations.push(newReservation);
-		res.json(newReservation);
+		if (reservations.length <=5) {
+			reservations.push(newReservation);
+			res.json(newReservation);
+			console.log("You've made a reservation")
+		} else if (waitlist.length <=2) {
+			waitlist.push(newReservation);
+			res.json(newReservation);
+			console.log("You've been added to the waitlist!")
+		} else {
+			console.log("Sorry, waitlist full!")
+		};
 });
 
-if (reservations.length <=5) {
-	reservations.push(newReservation);
-	res.json(newReservation);
-	console.log("You've made a reservation")
-} else if (waitlist.length <=2) {
-	waitlist.push(newReservation);
-	res.json(newReservation);
-	console.log("You've been added to the waitlist!")
-}
-	else
-	console.log("Sorry, waitlist full!")
