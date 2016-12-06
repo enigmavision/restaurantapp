@@ -20,20 +20,20 @@ app.listen(PORT, function() {
 	console.log("App listening on PORT " + PORT);
 });
 
-// CONNECT TO DATABASE
-var connection = mysql.createConnection({
-	host: "localhost",
-	port: 3306,
-	user: "root",
-	password: "",
-	database: "hotrestaurant"
-});
+// // CONNECT TO DATABASE
+// var connection = mysql.createConnection({
+// 	host: "localhost",
+// 	port: 3306,
+// 	user: "root",
+// 	password: "",
+// 	database: "hotrestaurant"
+// });
 
-// MAKE SURE WE'RE CONNECTED TO DATABASE
-connection.connect(function(err) {
-	if (err) throw err;
-	console.log("Connected as id " + connection.threadId);
-});
+// // MAKE SURE WE'RE CONNECTED TO DATABASE
+// connection.connect(function(err) {
+// 	if (err) throw err;
+// 	console.log("Connected as id " + connection.threadId);
+// });
 
 // SET UP THE EXPRESS APP TO HANDLE DATA PARSING
 app.use(bodyParser.json());
