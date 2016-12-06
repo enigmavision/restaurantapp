@@ -39,20 +39,19 @@
 		$.get("http://localhost:3000/api/", function(data){
 			if (data){
 				var newDiv = $("<div>").addClass("row");			
+				var newCol = $("<div>").addClass("col s12 m6");
+				var cardContainer = $("<div>").addClass("card blue-grey darken-1");
+				var cardText = $("<div>").addClass("card-content white-text");
+				var cardTitle = $("<span>").addClass("card-title");
 				for (var i= 0; i<data.length; i++) {
-					var newCol = $("<div>").addClass("col s12 m6");
 					newDiv.append(newCol);
-					var cardContainer = $("<div>").addClass("card blue-grey darken-1");
 					newCol.append(cardContainer);
-					var cardText = $("<div>").addClass("card-content white-text");
 					cardContainer.append(cardText);
-					var cardTitle = $("<span>").addClass("card-title");
 					cardText.append(cardTitle);
 					cardTitle.append(data[i].username);
-					cardTitle.append("<p>" + )
+					cardTitle.append("<p>" + data[i].name + "<br>");
+					$("#current_reservations").append(newDiv);
 				}
-
-				$("#current_reservations").append(newDiv);
 			} else {
 				$("#current_reservations").html("<h3 style='font-weight: 200;'> There are no reservations currently!</h3>")
 			}		
