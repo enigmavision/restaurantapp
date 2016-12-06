@@ -90,17 +90,16 @@ app.get("/add", function(req, res) {
 app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
 	newReservation.userName = newReservation.name.replace(/\s+/g, "").toLowerCase();
-		console.log(newReservation);
+		alert(newReservation);
 		if (reservations.length <=5) {
 			reservations.push(newReservation);
 			res.json(newReservation);
-			console.log("You've made a reservation")
+			alert("You've made a reservation")
 		} else if (waitlist.length <=2) {
 			waitlist.push(newReservation);
 			res.json(newReservation);
-			console.log("You've been added to the waitlist!")
+			alert("You've been added to the waitlist!")
 		} else {
-			console.log("Sorry, waitlist full!")
+			alert("Sorry, waitlist full!")
 		};
 });
-
