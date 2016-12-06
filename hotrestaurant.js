@@ -10,30 +10,26 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var mysql = require("mysql");
 // var keys = require("./keys.js")
 
 // SETS UP THE EXRESS APP
 var app = express();
 var appPORT = 3000;
-var sqlPORT = 3306;
 
 // LISTENING
 app.listen(appPORT, function() {
 	console.log("App listening on PORT " + appPORT);
 });
 
-app.listen(sqlPORT, function() {
-	console.log("App listening on PORT " + sqlPORT)
-})
-
-// CONNECT TO DATABASE
-// var connection = mysql.createConnection({
-// 	host     : "localhost",
-// 	port     : 3306,
-// 	user     : "root",
-// 	password : keys.pw.root,
-// 	database : "Bamazon"
-// });
+//CONNECT TO DATABASE
+var connection = mysql.createConnection({
+	host     : "localhost",
+	port     : 3306,
+	user     : "root",
+	password : "",
+	database : "hotrestaurant"
+});
 
 // MAKE SURE WE'RE CONNECTED TO DATABASE
 connection.connect(function(err) {
