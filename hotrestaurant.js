@@ -81,6 +81,19 @@ app.get("/view", function(req, res) {
 	//res.send(reservations);
 });
 
+app.get("api/:reservations?", function(req, res) {
+	var chosen = req.params.userName;
+	if (chosen) {
+		console.log(chosen);
+			for (var i=0; i < reservations.length; i++) {
+				res.json(reservations[i]);
+				return;
+			}
+	} else {
+		res.json(reservations);
+	}
+});
+
 // route to add specific reservations
 app.get("/add", function(req, res) {
 	res.sendFile(path.join(__dirname, "makeRes.html"));
@@ -90,16 +103,17 @@ app.get("/add", function(req, res) {
 app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
 	newReservation.userName = newReservation.name.replace(/\s+/g, "").toLowerCase();
-		alert(newReservation);
+		console.log(newReservation);
 		if (reservations.length <=5) {
 			reservations.push(newReservation);
 			res.json(newReservation);
-			alert("You've made a reservation")
+			console.log("You've made a reservation")
 		} else if (waitlist.length <=2) {
 			waitlist.push(newReservation);
 			res.json(newReservation);
-			alert("You've been added to the waitlist!")
+			console.log("You've been added to the waitlist!")
 		} else {
-			alert("Sorry, waitlist full!")
+			console.log("Sorry, waitlist full!")
 		};
 });
+
