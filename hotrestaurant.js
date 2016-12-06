@@ -34,17 +34,17 @@ var waitlist = [];
 
 // basic route that sends user to main page
 app.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "home.html"));
+	res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // route to view reservations
 app.get("/api/:reservations?", function(req, res) {
-	res.sendFile(path.join(__dirname, "view.html"));
+	res.sendFile(path.join(__dirname, "viewTable.html"));
 });
 
 // route to add specific reservations
 app.get("/add", function(req, res) {
-	res.sendFilr(path.join(__dirname, "make.html"));
+	res.sendFile(path.join(__dirname, "makeRes.html"));
 });
 
 // create new characters - takes in JSON input
