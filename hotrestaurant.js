@@ -7,9 +7,9 @@
 
 
 // DEPENDENCIES 
-var express = ("express");
-var bodyParser = ("body-parser");
-var path = ("path");
+var express = require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
 
 // SETS UP THE EXRESS APP
 var app = express();
@@ -28,6 +28,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // DATA
 var reservations = [];
+var waitlist = [];
 
 // ROUTES
 
@@ -37,7 +38,7 @@ app.get("/", function(req, res) {
 });
 
 // route to view reservations
-app.get("/app/:reservations?", function(req, res) {
+app.get("/api/:reservations?", function(req, res) {
 	res.sendFile(path.join(__dirname, "view.html"));
 });
 
@@ -47,10 +48,11 @@ app.get("/add", function(req, res) {
 });
 
 // create new characters - takes in JSON input
-app.post("/app/new", function(req, res) {
+app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
 	newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 		console.log(newReservation);
+		
 		reservations.push(newReservation);
 		res.json(newReservation);
 });
